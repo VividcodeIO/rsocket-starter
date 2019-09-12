@@ -4,27 +4,22 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.messaging.rsocket.RSocketRequester;
-
-import java.time.Duration;
-import reactor.core.publisher.Mono;
+import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 @SpringBootTest
-class EchoServerTest extends AbstractTest {
-
+public class StringSplitTest extends AbstractTest {
   @Test
-  @DisplayName("Test echo server")
+  @DisplayName("Test string split")
   void testEcho() {
     RSocketRequester requester = createRSocketRequester();
-    Mono<String> response = requester.route("echo")
+    Flux<String> response = requester.route("stringSplit")
         .data("hello")
-        .retrieveMono(String.class);
+        .retrieveFlux(String.class);
+
     StepVerifier.create(response)
-        .expectNext("ECHO >> hello")
+        .expectNext("h", "e", "l", "l", "o")
         .expectComplete()
         .verify();
   }
-
 }

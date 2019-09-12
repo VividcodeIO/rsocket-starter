@@ -6,6 +6,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.messaging.rsocket.RSocketRequester;
 
 import java.time.Duration;
+import reactor.core.publisher.Mono;
+import reactor.test.StepVerifier;
 
 @SpringBootTest
 class DataCollectorTest extends AbstractTest {
@@ -13,9 +15,10 @@ class DataCollectorTest extends AbstractTest {
 	@DisplayName("Test data collector")
 	void testDataCollector() {
 		RSocketRequester requester = createRSocketRequester();
-		requester.route("collect")
+		Mono<Void> result = requester.route("collect")
 				.data("a")
-				.send()
-				.block(Duration.ofSeconds(10));
+				.send();
+		StepVerifier.create(result)
+				.verifyComplete();
 	}
 }
