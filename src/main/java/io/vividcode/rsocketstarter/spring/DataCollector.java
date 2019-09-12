@@ -1,4 +1,4 @@
-package io.vividcode.rsocketstarter;
+package io.vividcode.rsocketstarter.spring;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.stereotype.Controller;

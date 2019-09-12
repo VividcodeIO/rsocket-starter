@@ -1,4 +1,4 @@
-package io.vividcode.rsocketstarter;
+package io.vividcode.rsocketstarter.spring;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -7,20 +7,15 @@ import org.springframework.messaging.rsocket.RSocketRequester;
 
 import java.time.Duration;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 @SpringBootTest
-class EchoServerTest extends AbstractTest {
-
+class DataCollectorTest extends AbstractTest {
 	@Test
-	@DisplayName("Test echo server")
-	void testEcho() {
+	@DisplayName("Test data collector")
+	void testDataCollector() {
 		RSocketRequester requester = createRSocketRequester();
-		String response = requester.route("echo")
-				.data("hello")
-				.retrieveMono(String.class)
+		requester.route("collect")
+				.data("a")
+				.send()
 				.block(Duration.ofSeconds(10));
-		assertEquals("ECHO >> hello", response);
 	}
-
 }
