@@ -8,10 +8,10 @@ import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
 @SpringBootTest
-public class StringsSplitTest extends AbstractTest {
+class StringsSplitTest extends AbstractTest {
   @Test
   @DisplayName("Test strings split")
-  void testEcho() {
+  void testStringsSplit() {
     RSocketRequester requester = createRSocketRequester();
     Flux<String> response = requester.route("stringsSplit")
         .data(Flux.fromArray(new String[] {"hello", "world"}))

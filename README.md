@@ -1,2 +1,6 @@
-# rsocket-example
- RSocket example with Spring
+# RSocket examples
+
+RSocket examples
+ * Standalone examples
+ * Spring messaging examples
+ * WebSocket 
