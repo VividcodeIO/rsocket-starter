@@ -8,12 +8,14 @@ import org.springframework.util.MimeTypeUtils;
 import io.rsocket.transport.netty.client.TcpClientTransport;
 
 abstract class AbstractTest {
-	@Value("${spring.rsocket.server.port}")
-	private int serverPort;
-	@Autowired
-	private RSocketRequester.Builder builder;
 
-	RSocketRequester createRSocketRequester() {
-		return builder.dataMimeType(MimeTypeUtils.TEXT_PLAIN).connect(TcpClientTransport.create(serverPort)).block();
-	}
+  @Value("${spring.rsocket.server.port}")
+  private int serverPort;
+  @Autowired
+  private RSocketRequester.Builder builder;
+
+  RSocketRequester createRSocketRequester() {
+    return builder.dataMimeType(MimeTypeUtils.TEXT_PLAIN)
+        .connect(TcpClientTransport.create(serverPort)).block();
+  }
 }

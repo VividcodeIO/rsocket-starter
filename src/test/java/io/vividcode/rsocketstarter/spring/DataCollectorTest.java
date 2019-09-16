@@ -11,14 +11,15 @@ import reactor.test.StepVerifier;
 
 @SpringBootTest
 class DataCollectorTest extends AbstractTest {
-	@Test
-	@DisplayName("Test data collector")
-	void testDataCollector() {
-		RSocketRequester requester = createRSocketRequester();
-		Mono<Void> result = requester.route("collect")
-				.data("a")
-				.send();
-		StepVerifier.create(result)
-				.verifyComplete();
-	}
+
+  @Test
+  @DisplayName("Test data collector")
+  void testDataCollector() {
+    RSocketRequester requester = createRSocketRequester();
+    Mono<Void> result = requester.route("collect")
+        .data("a")
+        .send();
+    StepVerifier.create(result)
+        .verifyComplete();
+  }
 }

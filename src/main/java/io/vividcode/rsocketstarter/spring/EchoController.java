@@ -7,8 +7,9 @@ import reactor.core.publisher.Mono;
 
 @Controller
 public class EchoController {
-	@MessageMapping("echo")
-	public Mono<String> echo(String input) {
-		return Mono.just("ECHO >> " + input);
-	}
+
+  @MessageMapping("echo")
+  public Mono<String> echo(String input) {
+    return Mono.just("ECHO >> " + input);
+  }
 }

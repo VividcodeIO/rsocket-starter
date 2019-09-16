@@ -7,9 +7,10 @@ import reactor.core.publisher.Mono;
 
 @Controller
 public class DataCollector {
-	@MessageMapping("collect")
-	public Mono<Void> collect(String data) {
-		System.out.println("Received >> " + data);
-		return Mono.empty();
-	}
+
+  @MessageMapping("collect")
+  public Mono<Void> collect(String data) {
+    System.out.println("Received >> " + data);
+    return Mono.empty();
+  }
 }
