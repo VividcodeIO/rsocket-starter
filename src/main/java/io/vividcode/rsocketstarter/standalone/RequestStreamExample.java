@@ -18,7 +18,8 @@ public class RequestStreamExample {
             new AbstractRSocket() {
               @Override
               public Flux<Payload> requestStream(Payload payload) {
-                return Flux.fromStream(payload.getDataUtf8().codePoints().mapToObj(c -> String.valueOf((char) c))
+                return Flux.fromStream(payload.getDataUtf8().codePoints()
+                    .mapToObj(c -> String.valueOf((char) c))
                     .map(DefaultPayload::create));
               }
             }

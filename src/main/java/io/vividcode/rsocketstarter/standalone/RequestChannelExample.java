@@ -21,7 +21,8 @@ public class RequestChannelExample {
               public Flux<Payload> requestChannel(Publisher<Payload> payloads) {
                 return Flux.from(payloads).flatMap(payload ->
                     Flux.fromStream(
-                        payload.getDataUtf8().codePoints().mapToObj(c -> String.valueOf((char) c))
+                        payload.getDataUtf8().codePoints()
+                            .mapToObj(c -> String.valueOf((char) c))
                             .map(DefaultPayload::create)));
               }
             }
