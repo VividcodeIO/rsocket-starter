@@ -6,7 +6,7 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.1",
-    "rsocket-websocket-client": "^0.0.10"
+    "rsocket-websocket-client": "^0.0.18"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -28,5 +28,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "http-proxy-middleware": "^0.20.0"
   }
 }

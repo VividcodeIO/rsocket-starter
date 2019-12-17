@@ -38,6 +38,7 @@ class App extends React.Component {
       this.setState({
         error,
       });
+      console.error(error);
     } else {
       this.setState({
         input: '',
@@ -61,7 +62,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>RSocket WebSocket example</h1>
-        {error && <div className="error">{error}</div>}
+        {error && <div className="error">{error.message}</div>}
         <div>
           <label>
             Input:
