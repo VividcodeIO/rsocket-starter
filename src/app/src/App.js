@@ -15,7 +15,10 @@ class App extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSend = this.handleSend.bind(this);
-    this._service = new MessageService(this.handleConnection.bind(this), this.handleResponseMessage.bind(this));
+    this._service = new MessageService(
+      this.handleConnection.bind(this),
+      this.handleResponseMessage.bind(this)
+    );
   }
 
   handleConnection(error) {
@@ -26,7 +29,7 @@ class App extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({input: event.target.value});
+    this.setState({ input: event.target.value });
   }
 
   handleSend() {
@@ -58,7 +61,7 @@ class App extends React.Component {
   }
 
   render() {
-    const {input, connected, error, messages} = this.state;
+    const { input, connected, error, messages } = this.state;
     return (
       <div className="App">
         <h1>RSocket WebSocket example</h1>
@@ -66,12 +69,16 @@ class App extends React.Component {
         <div>
           <label>
             Input:
-            <input type="text" value={input} disabled={!connected} onChange={this.handleChange}/>
-            <button disabled={!connected} onClick={this.handleSend}>Send</button>
+            <input type="text"
+              value={input}
+              disabled={!connected}
+              onChange={this.handleChange} />
+            <button disabled={!connected}
+              onClick={this.handleSend}>Send</button>
           </label>
         </div>
         <h2>Response messages</h2>
-        {messages.map((message, index) => ResponseMessage({message, index}))}
+        {messages.map((message, index) => ResponseMessage({ message, index }))}
       </div>
     );
   }

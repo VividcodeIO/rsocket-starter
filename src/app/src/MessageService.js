@@ -1,7 +1,11 @@
-import {RSocketClient, MAX_STREAM_ID} from 'rsocket-core';
+import { RSocketClient, MAX_STREAM_ID } from 'rsocket-core';
 import RSocketWebSocketClient from 'rsocket-websocket-client';
-import {encodeAndAddWellKnownMetadata} from 'rsocket-core';
-import {BufferEncoders, MESSAGE_RSOCKET_COMPOSITE_METADATA, MESSAGE_RSOCKET_ROUTING} from 'rsocket-core';
+import { encodeAndAddWellKnownMetadata } from 'rsocket-core';
+import {
+  BufferEncoders,
+  MESSAGE_RSOCKET_COMPOSITE_METADATA,
+  MESSAGE_RSOCKET_ROUTING
+} from 'rsocket-core';
 
 export default class MessageService {
   constructor(connectCallback, messageCallback) {
@@ -33,7 +37,11 @@ export default class MessageService {
 
   send(message) {
     const routeMetadata = this.encodeRoute('stringSplit');
-    const metadata = encodeAndAddWellKnownMetadata(Buffer.alloc(0), MESSAGE_RSOCKET_ROUTING, routeMetadata);
+    const metadata = encodeAndAddWellKnownMetadata(
+      Buffer.alloc(0),
+      MESSAGE_RSOCKET_ROUTING,
+      routeMetadata
+    );
     this._socket.requestStream({
       data: Buffer.from(message, 'utf8'),
       metadata,
