@@ -13,7 +13,7 @@ export default class MessageService {
       setup: {
         keepAlive: 5000,
         lifetime: 30000,
-        dataMimeType: 'text/plain',
+        dataMimeType: 'application/octet-stream',
         metadataMimeType: MESSAGE_RSOCKET_COMPOSITE_METADATA.string,
       },
       transport: new RSocketWebSocketClient({
